@@ -12,7 +12,7 @@
 
 
 ## Installation
-1. Download the newest .dll from the releases and add it as a reference to your project
+1. Add the nuget package
 1. Add JS (just copy this)
    ```html
     <script src="./_content/IntlTelInputBlazor/js/intlTelInput.js"></script>
