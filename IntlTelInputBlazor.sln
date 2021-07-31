@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1455CAB-0BED-4444-9076-BB11DF7AFC07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{829AE618-27F9-41B9-8EBC-E70BB983CA61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNumberInput", "examples\SimpleNumberInput\SimpleNumberInput.csproj", "{52607941-28B7-4967-8761-22D0335A0DB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntlTelInputBlazor", "src\IntlTelInputBlazor\IntlTelInputBlazor.csproj", "{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52607941-28B7-4967-8761-22D0335A0DB2} = {829AE618-27F9-41B9-8EBC-E70BB983CA61}
+		{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654} = {A1455CAB-0BED-4444-9076-BB11DF7AFC07}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52607941-28B7-4967-8761-22D0335A0DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52607941-28B7-4967-8761-22D0335A0DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52607941-28B7-4967-8761-22D0335A0DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52607941-28B7-4967-8761-22D0335A0DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2E3FFF-9D24-4FBA-90FD-A4293ACB0654}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

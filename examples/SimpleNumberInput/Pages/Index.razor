@@ -1,0 +1,37 @@
+﻿@page "/"
+@using SimpleNumberInput.Models
+@using IntlTelInputBlazor
+
+<h1>Hello, world!</h1>
+
+<EditForm EditContext="_editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    
+    <label>Tel. 1:</label>
+    <IntlTelInput @bind-Value="_model.IntTelNumber"/>
+    
+    <label>Tel. 2:</label>
+    <IntlTelInput @bind-Value="_model.IntTelNumber2"/>
+    <button class="btn-primary">Submit</button>
+</EditForm>
+
+
+
+@code
+{
+    NumberModel _model = new NumberModel();
+    EditContext _editContext;
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(_model);
+    }
+
+    private void OnValidSubmit()
+    {
+        var tel1 = _model.IntTelNumber.Number;
+        var tel2 = _model.IntTelNumber2.Number;
+        Console.WriteLine($"Number 1: {tel1}; Number 2: {tel2}");
+    }
+}

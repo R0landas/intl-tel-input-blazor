@@ -1,0 +1,87 @@
+@inherits InputBase<IntlTel>
+@inject IntlTelInputJsInterop _intlTelInputJsInterop
+
+<input @onchange="OnInput" type="tel" @ref="_telInput"/>
+
+@code {
+
+    [Parameter]
+    public bool AllowDropDown { get; set; } = true;
+    
+    [Parameter]
+    public bool AutoHideDialCode { get; set; } = true;
+
+    [Parameter]
+    public string AutoPlaceholder { get; set; } = "polite";
+    
+    [Parameter]
+    public string CustomContainer { get; set; }
+    
+    [Parameter]
+    public IEnumerable<string> ExcludeCountries { get; set; } = Enumerable.Empty<string>();
+    [Parameter]
+    public bool FormatOnDisplay { get; set; } = true;
+    
+    [Parameter]
+    public string InitialCountry { get; set; }
+
+    [Parameter]
+    public Dictionary<string, string> LocalizedCountries { get; set; }
+    
+    [Parameter]
+    public bool NationalMode { get; set; } = true;
+    
+    [Parameter]
+    public IEnumerable<string> OnlyCountries { get; set; } = Enumerable.Empty<string>();
+    
+    [Parameter]
+    public string PlaceholderNumberType { get; set; } = "MOBILE";
+    
+    [Parameter]
+    public IEnumerable<string> PreferredCountries { get; set; } = new[] {"us", "gb"};
+    
+    [Parameter]
+    public bool SeparateDialCode { get; set; }
+    
+    [Parameter]
+    public string UtilsScript { get; set; } = "./_content/IntlTelInputBlazor/js/utils.js";
+
+    ElementReference _telInput;
+
+    private int _inputIndex;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _inputIndex = await _intlTelInputJsInterop.Init(_telInput, new
+            {
+                AllowDropDown,
+                AutoHideDialCode,
+                AutoPlaceholder,
+                CustomContainer,
+                ExcludeCountries,
+                FormatOnDisplay,
+                InitialCountry,
+                LocalizedCountries,
+                NationalMode,
+                OnlyCountries,
+                PlaceholderNumberType,
+                PreferredCountries,
+                SeparateDialCode,
+                UtilsScript
+            });
+        }
+    }
+    
+    protected override bool TryParseValueFromString(string value, out IntlTel result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+
+    private async void OnInput(ChangeEventArgs e)
+    {
+        var intTel = await _intlTelInputJsInterop.GetData(_inputIndex);
+        CurrentValue = intTel;
+    }
+}
