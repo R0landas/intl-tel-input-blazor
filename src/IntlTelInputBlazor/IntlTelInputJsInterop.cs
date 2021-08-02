@@ -26,6 +26,11 @@ namespace IntlTelInputBlazor
         {
             return await _module.InvokeAsync<IntlTel>("get", inputIndex);
         }
+
+        public async ValueTask SetNumber(int id, string number)
+        {
+            await _module.InvokeVoidAsync("setNumber",id, number);
+        }
         
         public async ValueTask DisposeAsync()
         {

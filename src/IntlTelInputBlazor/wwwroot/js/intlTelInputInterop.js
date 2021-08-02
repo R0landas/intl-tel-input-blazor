@@ -6,8 +6,7 @@ export function init(element, options) {
     return inputs.indexOf(iti);
 }
 
-export function get(id)
-{
+export function get(id) {
     const input = inputs[id];
     
     const number = input.getNumber();
@@ -18,4 +17,9 @@ export function get(id)
     const numberType = input.getNumberType();
     
     return {isValid, number, validationError, countryData, extension, numberType};
+}
+
+export function setNumber(id, number) {
+    const input = inputs[id];
+    input.setNumber(number);
 }

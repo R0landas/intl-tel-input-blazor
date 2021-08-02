@@ -71,6 +71,11 @@
                 SeparateDialCode,
                 UtilsScript
             });
+
+            if (CurrentValue is not null)
+            {
+                await _intlTelInputJsInterop.SetNumber(_inputIndex, CurrentValue.Number);
+            }
         }
     }
     
@@ -81,7 +86,10 @@
 
     private async void OnInput(ChangeEventArgs e)
     {
-        var intTel = await _intlTelInputJsInterop.GetData(_inputIndex);
-        CurrentValue = intTel;
+        CurrentValue = await _intlTelInputJsInterop.GetData(_inputIndex);
+        if (CurrentValue is not null)
+        {
+            await _intlTelInputJsInterop.SetNumber(_inputIndex, CurrentValue.Number);
+        }
     }
 }
