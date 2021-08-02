@@ -9,15 +9,14 @@ namespace IntlTelInputBlazor.Validation
         {
             if (value is null)
             {
-                return new ValidationResult(ErrorMessage);
+                return new ValidationResult(ErrorMessage, new []{validationContext.MemberName});
             }
             
             if (value is not IntlTel intlTel)
             {
                 throw new InvalidOperationException($"{nameof(IntlTelephoneAttribute)} can only validate {nameof(intlTel)}");
             }
-
-            return intlTel.IsValid ? ValidationResult.Success : new ValidationResult(ErrorMessage);
+            return intlTel.IsValid ? ValidationResult.Success : new ValidationResult(ErrorMessage, new []{validationContext.MemberName});
         }
     }
 }
