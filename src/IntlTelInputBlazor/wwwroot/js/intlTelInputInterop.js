@@ -1,7 +1,8 @@
 const inputs = [];
 
-export function init(element, options) {
+export function init(element, helper, options) {    
     const iti = window.intlTelInput(element, options);
+    iti.dotNetHelper = helper;
     inputs.push(iti);
     return inputs.indexOf(iti);
 }

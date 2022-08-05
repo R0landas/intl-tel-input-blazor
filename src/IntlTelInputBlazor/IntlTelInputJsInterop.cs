@@ -16,10 +16,10 @@ namespace IntlTelInputBlazor
                 "import", "./_content/IntlTelInputBlazor/js/intlTelInputInterop.js").AsTask());
         }
 
-        public async ValueTask<int> Init(ElementReference reference, object options)
+        public async ValueTask<int> Init(ElementReference reference, DotNetObjectReference<IntlTelInput> dotNetHelper, object options)
         {
             _module = await _moduleTask.Value;
-            return await _module.InvokeAsync<int>("init", reference, options);
+            return await _module.InvokeAsync<int>("init", reference, dotNetHelper, options);
         }
 
         public async ValueTask<IntlTel> GetData(int inputIndex)

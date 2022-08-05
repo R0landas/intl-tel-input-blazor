@@ -8,11 +8,12 @@
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     
-    <label>Tel. 1:</label>
+    <label>Tel. 1: (@_model.Number)</label>
     <IntlTelInput @bind-Value="_model.IntTelNumber"/>
-    
-    <label>Tel. 2:</label>
+    <br />
+    <label>Tel. 2:(@_model.Number2)</label>
     <IntlTelInput @bind-Value="_model.IntTelNumber2"/>
+    <br />
     <button class="btn-primary">Submit</button>
 </EditForm>
 
