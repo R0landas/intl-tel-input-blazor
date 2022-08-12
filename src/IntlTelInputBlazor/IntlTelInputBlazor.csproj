@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyVersion>1.0.2</AssemblyVersion>
         <FileVersion>1.0.2</FileVersion>
         <Authors>Rolandas</Authors>
@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
     </ItemGroup>
 
     <ItemGroup>
