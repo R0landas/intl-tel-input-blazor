@@ -22,6 +22,12 @@ namespace IntlTelInputBlazor
             return await _module.InvokeAsync<int>("init", reference, dotNetHelper, options);
         }
 
+        public async ValueTask<int> Init2(ElementReference reference, DotNetObjectReference<MudIntlTelInput<IntlTel>> dotNetHelper, object options)
+        {
+            _module = await _moduleTask.Value;
+            return await _module.InvokeAsync<int>("init", reference, dotNetHelper, options);
+        }
+
         public async ValueTask<IntlTel> GetData(int inputIndex)
         {
             return await _module.InvokeAsync<IntlTel>("get", inputIndex);
@@ -29,9 +35,9 @@ namespace IntlTelInputBlazor
 
         public async ValueTask SetNumber(int id, string number)
         {
-            await _module.InvokeVoidAsync("setNumber",id, number);
+            await _module.InvokeVoidAsync("setNumber", id, number);
         }
-        
+
         public async ValueTask DisposeAsync()
         {
             if (_moduleTask.IsValueCreated)

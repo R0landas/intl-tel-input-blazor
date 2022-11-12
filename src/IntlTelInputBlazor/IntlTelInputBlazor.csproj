@@ -2,15 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyVersion>1.0.3</AssemblyVersion>
-        <FileVersion>1.0.3</FileVersion>
-        <Authors>Rolandas</Authors>
+        <AssemblyVersion>1.1.0</AssemblyVersion>
+        <FileVersion>1.1.0</FileVersion>
+        <Authors>Rolandas, Giovanni Quarella</Authors>
 		<PackageId>IntlTelInputBlazor.Fork</PackageId>
-        <PackageTags>Blazor;intl-tel-input;</PackageTags>
+        <PackageTags>Blazor;intl-tel-input;MudBlazor</PackageTags>
         <Description>
             International Telephone Input js library wrapper for Blazor serverside and clientside!
         </Description>
-        <Version>1.0.4</Version>
+        <Version>1.1.0</Version>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/R0landas/intl-tel-input-blazor</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -25,7 +25,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.10" />
+		<PackageReference Include="MudBlazor" Version="6.0.18" />
     </ItemGroup>
 
     <ItemGroup>

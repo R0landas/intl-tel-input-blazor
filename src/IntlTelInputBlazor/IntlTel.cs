@@ -35,6 +35,11 @@ namespace IntlTelInputBlazor
             return HashCode.Combine(Number);
         }
 
+        public override string ToString()
+        {
+            return Number;
+        }
+
         public static bool operator ==(IntlTel left, IntlTel right)
         {
             return EqualityComparer<IntlTel>.Default.Equals(left, right);
@@ -44,5 +49,8 @@ namespace IntlTelInputBlazor
         {
             return !(left == right);
         }
+
+        public static implicit operator string(IntlTel i) { return i?.Number; }
+        public static implicit operator IntlTel(string number) { return new IntlTel { Number = number }; }
     }
 }

@@ -16,6 +16,7 @@ namespace IntlTelInputBlazor.Validation
             {
                 throw new InvalidOperationException($"{nameof(IntlTelephoneAttribute)} can only validate {nameof(intlTel)}");
             }
+
             return intlTel.IsValid ? ValidationResult.Success : new ValidationResult(ErrorMessage, new []{validationContext.MemberName});
         }
     }
