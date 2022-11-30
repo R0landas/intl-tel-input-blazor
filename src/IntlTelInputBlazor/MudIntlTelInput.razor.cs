@@ -4,6 +4,7 @@ using Microsoft.JSInterop;
 using MudBlazor;
 using MudBlazor.Utilities;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -144,7 +145,7 @@ namespace IntlTelInputBlazor
         public string PlaceholderNumberType { get; set; } = "MOBILE";
 
         [Parameter]
-        public IEnumerable<string> PreferredCountries { get; set; } = new[] { "us", "gb" };
+        public IEnumerable<string> PreferredCountries { get; set; } = new[] { RegionInfo.CurrentRegion.TwoLetterISORegionName };
 
         [Parameter]
         public bool SeparateDialCode { get; set; }
