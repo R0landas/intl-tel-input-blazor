@@ -101,7 +101,7 @@
     position: absolute;
     top: -1000px;
     left: -1000px;
-    z-index: 1060;
+    z-index: 99999;
     padding: 1px; }
     .iti--container:hover {
       cursor: pointer; }
