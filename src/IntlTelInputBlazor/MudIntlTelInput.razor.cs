@@ -197,7 +197,7 @@ namespace IntlTelInputBlazor
                 await _intlTelInputJsInterop.SetNumber(_inputIndex, value.ToString());
             }
 
-            await SetValueAsync(value, true);
+            await base.SetValueAsync(value, true);
         }
 
         private async Task OnInput(ChangeEventArgs e)
