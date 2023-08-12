@@ -80,11 +80,11 @@ namespace IntlTelInputBlazor
             return InputReference.SelectRangeAsync(pos1, pos2);
         }
 
-        protected override void ResetValue()
+        protected override async Task ResetValueAsync()
         {
-            InputReference.Reset();
+            await InputReference.ResetAsync();
 
-            base.ResetValue();
+            await  base.ResetValueAsync();
         }
 
         /// <summary>
