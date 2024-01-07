@@ -1,19 +1,21 @@
 ﻿@page "/"
 @using SimpleNumberInput.Models
 @using IntlTelInputBlazor
+@using MudBlazor
 
-<h1>Hello, world!</h1>
+<h1>Hello, phone!</h1>
 
 <EditForm EditContext="_editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
+
+    <MudIntlTelInput @bind-Value="_model.IntTelNumber" Label=@($"Tel. 1: ({_model.Number})") For="@(() => _model.IntTelNumber)" />
+
+    <MudIntlTelInput @bind-Value="_model.IntTelNumber2" Label=@($"Tel. 2: ({_model.Number2})") For="@(() => _model.IntTelNumber2)" />
+    <br />
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
     
-    <label>Tel. 1:</label>
-    <IntlTelInput @bind-Value="_model.IntTelNumber"/>
-    
-    <label>Tel. 2:</label>
-    <IntlTelInput @bind-Value="_model.IntTelNumber2"/>
-    <button class="btn-primary">Submit</button>
 </EditForm>
 
 

@@ -1056,6 +1056,7 @@
                         }
                     } else if (this.options.nationalMode || this.options.separateDialCode) {
                         // don't do anything
+                        this.dotNetHelper.invokeMethodAsync('Update');
                         return;
                     } else {
                         // nationalMode is disabled
@@ -1067,10 +1068,12 @@
                             // disabled: insert new dial code
                             newNumber = newDialCode;
                         } else {
+                            this.dotNetHelper.invokeMethodAsync('Update');
                             return;
                         }
                     }
                     this.telInput.value = newNumber;
+                    this.dotNetHelper.invokeMethodAsync('Update');
                 }
             }, {
                 key: "_getDialCode",

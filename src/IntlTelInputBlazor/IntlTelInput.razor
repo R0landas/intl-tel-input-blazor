@@ -7,42 +7,42 @@
 
     [Parameter]
     public bool AllowDropDown { get; set; } = true;
-    
+
     [Parameter]
     public bool AutoHideDialCode { get; set; } = true;
 
     [Parameter]
     public string AutoPlaceholder { get; set; } = "polite";
-    
+
     [Parameter]
     public string CustomContainer { get; set; }
-    
+
     [Parameter]
     public IEnumerable<string> ExcludeCountries { get; set; } = Enumerable.Empty<string>();
     [Parameter]
     public bool FormatOnDisplay { get; set; } = true;
-    
+
     [Parameter]
     public string InitialCountry { get; set; }
 
     [Parameter]
     public Dictionary<string, string> LocalizedCountries { get; set; }
-    
+
     [Parameter]
     public bool NationalMode { get; set; } = true;
-    
+
     [Parameter]
     public IEnumerable<string> OnlyCountries { get; set; } = Enumerable.Empty<string>();
-    
+
     [Parameter]
     public string PlaceholderNumberType { get; set; } = "MOBILE";
-    
+
     [Parameter]
     public IEnumerable<string> PreferredCountries { get; set; } = new[] {"us", "gb"};
-    
+
     [Parameter]
     public bool SeparateDialCode { get; set; }
-    
+
     [Parameter]
     public string UtilsScript { get; set; } = "./_content/IntlTelInputBlazor/js/utils.js";
 
@@ -50,11 +50,15 @@
 
     private int _inputIndex;
 
+    private DotNetObjectReference<IntlTelInput> dotNetHelper;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _inputIndex = await _intlTelInputJsInterop.Init(_telInput, new
+            dotNetHelper = DotNetObjectReference.Create(this);
+
+            _inputIndex = await _intlTelInputJsInterop.Init(_telInput, dotNetHelper, new
             {
                 AllowDropDown,
                 AutoHideDialCode,
@@ -78,18 +82,29 @@
             }
         }
     }
-    
+
     protected override bool TryParseValueFromString(string value, out IntlTel result, out string validationErrorMessage)
     {
         throw new NotImplementedException();
     }
 
-    private async void OnInput(ChangeEventArgs e)
+    [JSInvokable]
+    public async Task Update()
     {
         CurrentValue = await _intlTelInputJsInterop.GetData(_inputIndex);
         if (CurrentValue is not null)
         {
             await _intlTelInputJsInterop.SetNumber(_inputIndex, CurrentValue.Number);
         }
+    }
+
+    private async void OnInput(ChangeEventArgs e)
+    {
+        await Update();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        dotNetHelper?.Dispose();
     }
 }

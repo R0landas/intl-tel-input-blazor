@@ -1,0 +1,62 @@
+﻿@using MudBlazor
+@typeparam T
+@inherits MudDebouncedInput<T>
+@inject IntlTelInputJsInterop _intlTelInputJsInterop
+
+<CascadingValue Name="SubscribeToParentForm" Value="@SubscribeToParentFormEx" IsFixed="true">
+    <MudInputControl Label="@Label"
+                     Variant="@Variant"
+                     HelperText="@HelperText"
+                     HelperTextOnFocus="@HelperTextOnFocus"
+                     CounterText="@GetCounterText()"
+                     FullWidth="@FullWidth"
+                     Class="@Classname"
+                     Error="@HasErrors"
+                     ErrorText="@GetErrorText()"
+                     ErrorId="@ErrorId"
+                     Disabled="@Disabled"
+                     Margin="@Margin"
+                     Required="@Required"
+                     ForId="@FieldId">
+        <InputContent>
+            <CascadingValue Name="SubscribeToParentForm" Value="false" IsFixed="true">
+                    <MudInput T="string"
+                          @ref="InputReference"
+                          @attributes="UserAttributes"
+                          InputType="@InputType"
+                          Lines="@Lines"
+                          Style="@Style"
+                          Variant="@Variant"
+                          TextUpdateSuppression="@TextUpdateSuppression"
+                          Value="@Text"
+                          ValueChanged="(s) => SetTextAsync(s)"
+                          Placeholder="@Placeholder"
+                          Disabled=@Disabled
+                          DisableUnderLine="@DisableUnderLine"
+                          ReadOnly="@ReadOnly"
+                          MaxLength="@MaxLength"
+                          Adornment="@Adornment"
+                          AdornmentText="@AdornmentText"
+                          AdornmentIcon="@AdornmentIcon"
+                          AdornmentColor="@AdornmentColor"
+                          AdornmentAriaLabel="@AdornmentAriaLabel"
+                          IconSize="@IconSize"
+                          OnAdornmentClick="@OnAdornmentClick"
+                          Error="@Error"
+                          ErrorId="@ErrorId"
+                          Immediate="@Immediate"
+                          Margin="@Margin"
+                          OnBlur="@OnBlurredAsync"
+                          OnKeyDown="@InvokeKeyDownAsync"
+                          OnInternalInputChanged="@OnInput"
+                          OnKeyUp="@InvokeKeyUpAsync"
+                          KeyDownPreventDefault="KeyDownPreventDefault"
+                          KeyUpPreventDefault="KeyUpPreventDefault"
+                          HideSpinButtons="true"
+                          Clearable="@Clearable"
+                          OnClearButtonClick="@OnClearButtonClick"
+                          Pattern="@Pattern" />
+            </CascadingValue>
+        </InputContent>
+    </MudInputControl>
+</CascadingValue>

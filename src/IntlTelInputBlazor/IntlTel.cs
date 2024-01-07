@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
+
 namespace IntlTelInputBlazor
 {
-    public class IntlTel
+    public class IntlTel : IEquatable<IntlTel>
     {
         /// <summary>
         /// The telephone number entered by the user
@@ -15,5 +18,39 @@ namespace IntlTelInputBlazor
         public IntlTelCountryData CountryData { get; set; }
         public string Extension { get; set; }
         public int NumberType { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as IntlTel);
+        }
+
+        public bool Equals(IntlTel other)
+        {
+            return other is not null &&
+                   Number == other.Number;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Number);
+        }
+
+        public override string ToString()
+        {
+            return Number;
+        }
+
+        public static bool operator ==(IntlTel left, IntlTel right)
+        {
+            return EqualityComparer<IntlTel>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(IntlTel left, IntlTel right)
+        {
+            return !(left == right);
+        }
+
+        public static implicit operator string(IntlTel i) { return i?.Number; }
+        public static implicit operator IntlTel(string number) { return new IntlTel { Number = number }; }
     }
 }

@@ -101,7 +101,7 @@
     position: absolute;
     top: -1000px;
     left: -1000px;
-    z-index: 1060;
+    z-index: 99999;
     padding: 1px; }
     .iti--container:hover {
       cursor: pointer; }
@@ -926,3 +926,32 @@
 
 .iti__flag.iti__np {
   background-color: transparent; }
+
+
+.iti {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 100%;
+    position: relative;
+}
+
+    .iti input {
+        font: inherit;
+        outline: none;
+        width: 100%;
+        height: 1.1876em;
+        padding-top: 6px;
+        padding-bottom: 7px;
+        box-sizing: content-box;
+        border-bottom: 1px solid var(--mud-palette-lines-inputs);
+    }
+
+.mud-input-iti label {
+    opacity: 0;
+}
+
+.mud-input-iti:focus-within label {
+    opacity: 1;
+}
